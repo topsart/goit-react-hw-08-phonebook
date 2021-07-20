@@ -1,0 +1,17 @@
+.contacts_list {
+  margin: 0 auto;
+  border: 1px solid green;
+}
+
+.contacts_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+.contacts_list__button:hover {
+  cursor: pointer;
+  background-color: red;
+}

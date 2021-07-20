@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.form__input {
+  margin-bottom: 10px;
+}
+
+.form__button:hover {
+  background-color: green;
+  cursor: pointer;
+}
