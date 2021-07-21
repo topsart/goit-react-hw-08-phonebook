@@ -1,31 +1,37 @@
 import React, { Component } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ContactsList from './components/ContactsList';
-import Form from './components/Form/Form';
-import Filter from './components/Filter/Filter';
-import contactsOperations from './redux/contacts/contacts-operations';
+import Container from './components/Container';
+import AppBar from './components/AppBar';
+import HomeView from './views/HomeView';
+import RegisterView from './views/RegisterView';
+import LoginView from './views/LoginView';
+import ContactsView from './views/ContactsView';
+import { authOperations } from './redux/auth';
 
 class App extends Component {
   componentDidMount() {
-    this.props.fetchContacts();
+    this.props.onGetCurrentUser();
   }
 
   render() {
     return (
-      <div className="container">
-        <h1 className="title">Phonebook</h1>
-        <Form onSubmit={this.addContact} />
+      <Container>
+        <AppBar />
 
-        <h2 className="title">Contacts</h2>
-        <Filter />
-        <ContactsList />
-      </div>
+        <Switch>
+          <Route exact path="/" component={HomeView} />
+          <Route path="/register" component={RegisterView} />
+          <Route path="/login" component={LoginView} />
+          <Route path="/contacts" component={ContactsView} />
+        </Switch>
+      </Container>
     );
   }
 }
 
-const mapDispatchToProps = dispatch => ({
-  fetchContacts: () => dispatch(contactsOperations.fetchContacts()),
-});
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
 
 export default connect(null, mapDispatchToProps)(App);
