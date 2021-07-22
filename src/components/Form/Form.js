@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { contactsOperations } from '../../redux/contacts';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import shortid from 'shortid';
 import styles from './Form.module.css';
 
@@ -21,8 +21,14 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const { contacts, onSubmit } = this.props;
+    const { name, number } = this.state;
 
-    this.props.onSubmit(this.state);
+    contacts.find(contact => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : contacts.find(contact => contact.number === number)
+      ? alert(`${number} is already in contacts`)
+      : onSubmit(this.state);
 
     this.reset();
   };
@@ -72,9 +78,13 @@ class Form extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getFilteredContacts(state),
+});
+
 const mapDispatchToProps = dispatch => ({
   onSubmit: (name, number) =>
     dispatch(contactsOperations.addContact(name, number)),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(mapStateToProps, mapDispatchToProps)(Form);

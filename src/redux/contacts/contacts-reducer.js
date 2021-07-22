@@ -9,10 +9,7 @@ import {
 
 const items = createReducer([], {
   [fetchContactSuccess]: (state, { payload }) => payload,
-  [addContactSuccess]: (state, { payload }) =>
-    state.find(contact => contact.name === payload.name)
-      ? alert(`${payload.name} already exist`)
-      : [...state, payload],
+  [addContactSuccess]: (state, { payload }) => [...state, payload],
   [deleteContactSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
