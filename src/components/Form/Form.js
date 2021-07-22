@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import shortid from 'shortid';
 import styles from './Form.module.css';
+import { Button } from '@material-ui/core';
 
 class Form extends Component {
   state = {
@@ -69,9 +70,9 @@ class Form extends Component {
             title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
             required
           />
-          <button className={styles.form__button} type="submit">
+          <Button variant="contained" color="primary" type="submit">
             Add contact
-          </button>
+          </Button>
         </form>
       </>
     );
