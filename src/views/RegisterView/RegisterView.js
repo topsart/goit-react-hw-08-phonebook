@@ -51,11 +51,11 @@ class RegisterView extends Component {
                   value={name}
                   onChange={this.handleChange}
                   autoComplete="fname"
-                  name="firstName"
+                  name="name"
                   variant="outlined"
                   required
                   fullWidth
-                  id="firstName"
+                  id="name"
                   label="Name"
                   autoFocus
                 />
