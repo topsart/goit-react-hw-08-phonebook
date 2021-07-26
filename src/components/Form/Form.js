@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import shortid from 'shortid';
 import styles from './Form.module.css';
+import { Paper } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
 
 class Form extends Component {
@@ -40,41 +42,41 @@ class Form extends Component {
 
   render() {
     return (
-      <>
-        <form className={styles.form} onSubmit={this.handleSubmit}>
-          <label className={styles.form__lable} htmlFor={this.nameInputId}>
-            Name
-          </label>
-          <input
-            className={styles.form__input}
-            value={this.state.name}
-            onChange={this.handleChange}
-            id={this.nameInputId}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            required
-          />
-          <label className={styles.form__lable} htmlFor={this.numberInputId}>
-            Number
-          </label>
-          <input
-            className={styles.form__input}
-            id={this.numberInputId}
-            value={this.state.number}
-            onChange={this.handleChange}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-          />
-          <Button variant="contained" color="primary" type="submit">
-            Add contact
-          </Button>
-        </form>
-      </>
+      <Paper className={styles.form}>
+        <TextField
+          className={styles.form_item}
+          onChange={this.handleChange}
+          value={this.state.name}
+          id={this.nameInputId}
+          name="name"
+          type="text"
+          label="Full Name"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          required
+          variant="outlined"
+        />
+        <TextField
+          className={styles.form_item}
+          onChange={this.handleChange}
+          value={this.state.number}
+          id={this.numberInputId}
+          name="number"
+          type="tel"
+          label="Phone Number"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
+          variant="outlined"
+        />
+        <Button
+          className={styles.form_item}
+          variant="contained"
+          color="primary"
+          type="submit"
+          onClick={this.handleSubmit}
+        >
+          Add contact
+        </Button>
+      </Paper>
     );
   }
 }

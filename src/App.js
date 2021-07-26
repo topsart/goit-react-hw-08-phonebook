@@ -2,14 +2,14 @@ import React, { Component, Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Container from './components/Container';
-import AppBar from './components/AppBar';
+import AppBar from './components/AppBar/AppBar';
 import { authOperations } from './redux/auth';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
-const HomeView = lazy(() => import('./views/HomeView'));
-const RegisterView = lazy(() => import('./views/RegisterView'));
-const LoginView = lazy(() => import('./views/LoginView'));
+const HomeView = lazy(() => import('./views/HomeView/HomeView'));
+const RegisterView = lazy(() => import('./views/RegisterView/RegisterView'));
+const LoginView = lazy(() => import('./views/LoginView/LoginView'));
 const ContactsView = lazy(() => import('./views/ContactsView'));
 
 class App extends Component {

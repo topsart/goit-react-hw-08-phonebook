@@ -2,22 +2,38 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import styles from './ContactsList.module.css';
+import { Paper } from '@material-ui/core';
+import { List } from '@material-ui/core';
+import IconButton from '@material-ui/core/IconButton';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Avatar from '@material-ui/core/Avatar';
+import PhoneAndroid from '@material-ui/icons/PhoneAndroid';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const ContactsList = ({ contacts, onDeleteContact }) => (
-  <ul className={styles.contacts_list}>
-    {contacts.map(({ id, name, number }) => (
-      <li key={id} className={styles.contacts_item}>
-        <p>{name}:</p>
-        <p>{number}</p>
-        <button
-          className={styles.contacts_list__button}
-          onClick={() => onDeleteContact(id)}
-        >
-          Удалить
-        </button>
-      </li>
-    ))}
-  </ul>
+  <Paper className={styles.contacts_list_wrapper}>
+    <List className={styles.contacts_list}>
+      {contacts.map(({ id, name, number }) => (
+        <ListItem key={id}>
+          <ListItemAvatar>
+            <Avatar>
+              <PhoneAndroid />
+            </Avatar>
+          </ListItemAvatar>
+          <ListItemText primary={name} secondary={number} />
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={() => onDeleteContact(id)}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </ListItem>
+      ))}
+    </List>
+  </Paper>
 );
 
 const mapStateToProps = state => ({

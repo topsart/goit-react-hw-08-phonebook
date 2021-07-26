@@ -3,18 +3,20 @@ import { connect } from 'react-redux';
 import styles from './Filter.module.css';
 import shortid from 'shortid';
 import { contactsSelectors, changeFilter } from '../../redux/contacts';
+import InputBase from '@material-ui/core/InputBase';
+import SearchIcon from '@material-ui/icons/Search';
 
 const nameInputId = shortid.generate();
 
 const Filter = ({ value, onChange }) => (
-  <div className={styles.filter}>
-    <label className={styles.filter__label} htmlFor={nameInputId}>
-      Find contacts by name
-    </label>
-    <input
-      className={styles.filter__input}
-      type="text"
-      name="filter"
+  <div className={styles.search}>
+    <div className={styles.searchIcon}>
+      <SearchIcon />
+    </div>
+    <InputBase
+      className={styles.inputInput}
+      color="secondary"
+      placeholder="Search contacts..."
       id={nameInputId}
       value={value}
       onChange={onChange}

@@ -1,7 +1,35 @@
-.filter {
-  margin-bottom: 20px;
+.search {
+  position: relative;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: rgb(194, 194, 194);
+  margin-right: 0;
+  margin-left: 0;
+  width: 300px;
 }
 
-.filter__label {
-  margin-right: 10px;
+.search:hover {
+  background-color: rgb(194, 194, 194, 0.75);
+}
+
+.searchIcon {
+  width: 50px;
+  height: 100%;
+  position: absolute;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.inputInput {
+  margin-left: 50px;
+  padding: 5px 0;
+  width: 100%;
+  color: black;
+}
+
+.inputInput::placeholder {
+  color: tomato;
 }
