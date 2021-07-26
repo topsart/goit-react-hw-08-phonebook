@@ -2,8 +2,8 @@ import React from 'react';
 import styles from './HomeView.module.css';
 
 const HomeView = () => (
-  <div style={styles.container}>
-    <h1 style={styles.title}>
+  <div className={styles.container}>
+    <h1 className={styles.title}>
       Phonebook v1.0{' '}
       <span role="img" aria-label="Иконка приветствия">
         💁‍♀️

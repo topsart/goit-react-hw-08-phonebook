@@ -11,7 +11,7 @@ const AuthNav = () => (
       className={styles.link}
       activeClassName={styles.activeLink}
     >
-      <Typography variant="h7">Sign up</Typography>
+      <Typography variant="h6">Sign up</Typography>
     </NavLink>
     <NavLink
       to="/login"
@@ -19,7 +19,7 @@ const AuthNav = () => (
       className={styles.link}
       activeClassName={styles.activeLink}
     >
-      <Typography variant="h7">Sign in</Typography>
+      <Typography variant="h6">Sign in</Typography>
     </NavLink>
   </div>
 );
